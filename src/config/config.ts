@@ -7,3 +7,4 @@ export const port =
   process.env.PORT !== null && process.env.PORT !== undefined
     ? process.env.PORT
     : 3001
+export const mongoDB = process.env.DB_URL

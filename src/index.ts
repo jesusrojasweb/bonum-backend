@@ -1,7 +1,10 @@
 import express from 'express'
 import { port } from './config/config'
+import connectDB from './config/mongo'
 
 const app = express()
+
+void connectDB()
 
 app.use(express.json())
 
