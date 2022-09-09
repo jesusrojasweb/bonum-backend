@@ -1,10 +1,15 @@
 import { Request, Response } from 'express'
+import { SECRET } from '../config/config'
 import * as authServices from '../services/authServices'
+import { ReqWithId } from '../types'
+import { generateToken } from '../utils/tokenManager'
+
+const expiresIn = 60 * 60
 
 export const createUser = (req: Request, res: Response): void => {
   const userReq = req.body
   authServices
-    .createUser(userReq)
+    .createUser(userReq, res)
     .then(newUser => {
       res.status(201).json({ status: 'OK', data: newUser })
     })
@@ -24,4 +29,17 @@ export const login = (req: Request, res: Response): void => {
     .catch(error => {
       res.status(401).json({ msg: error.message })
     })
+}
+
+export const logout = (_req: Request, res: Response): void => {
+  res.clearCookie('refreshToken')
+  res.json({ status: 'OK' })
+}
+
+export const refreshToken = (req: ReqWithId, res: Response): void => {
+  const { id = '' } = req
+
+  const { token } = generateToken(id, expiresIn, SECRET)
+
+  res.json({ status: 'OK', data: { token } })
 }

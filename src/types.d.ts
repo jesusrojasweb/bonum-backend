@@ -1,3 +1,5 @@
+import { Request } from 'express'
+
 export interface CreateUser {
   name: string
   email: string
@@ -8,4 +10,8 @@ export interface CreateUser {
 export interface LoginUser {
   email: string
   password: string
+}
+
+interface ReqWithId extends Request {
+  id?: string
 }

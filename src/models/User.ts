@@ -1,4 +1,5 @@
 import { Schema, model } from 'mongoose'
+import transformSchema from '../utils/transformSchema'
 
 const userSchema = new Schema({
   name: {
@@ -21,11 +22,7 @@ const userSchema = new Schema({
 })
 
 userSchema.set('toJSON', {
-  transform: (_document, returnedObject) => {
-    returnedObject.id = returnedObject._id
-    delete returnedObject._id
-    delete returnedObject.__v
-  },
+  transform: transformSchema,
 })
 
 export default model('User', userSchema)

@@ -1,10 +1,10 @@
 import mongoose from 'mongoose'
-import { mongoDB } from './config'
+import { DB_UR } from './config'
 
 const connectDB = async (): Promise<any> => {
   try {
-    if (mongoDB !== undefined) {
-      await mongoose.connect(mongoDB)
+    if (DB_UR !== undefined) {
+      await mongoose.connect(DB_UR)
       console.log('Database connected')
     } else {
       throw new Error('Mongo URL is undefined')
