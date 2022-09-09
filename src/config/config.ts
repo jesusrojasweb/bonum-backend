@@ -8,3 +8,7 @@ export const port =
     ? process.env.PORT
     : 3001
 export const mongoDB = process.env.DB_URL
+export const secret =
+  process.env.SECRET !== null && process.env.SECRET !== undefined
+    ? process.env.SECRET
+    : 'secret'
