@@ -1,11 +1,7 @@
 import { NextFunction, Response } from 'express'
 import jwt from 'jsonwebtoken'
 import { SECRET_REFRESH } from '../config/config'
-import { ReqWithId } from '../types'
-
-interface JwtPayload {
-  id: string
-}
+import { JwtPayload, ReqWithId } from '../types'
 
 export const requireRefreshToken = (
   req: ReqWithId,

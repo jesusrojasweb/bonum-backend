@@ -12,6 +12,10 @@ export interface LoginUser {
   password: string
 }
 
-interface ReqWithId extends Request {
+export interface ReqWithId extends Request {
   id?: string
+}
+
+export interface JwtPayload {
+  id: string
 }
