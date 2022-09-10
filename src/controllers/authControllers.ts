@@ -15,7 +15,7 @@ export const createUser = (req: Request, res: Response): void => {
     })
     .catch(error => {
       console.log('error controller')
-      res.status(500).json({ msg: error.message })
+      res.status(500).json({ error: error.message })
     })
 }
 
@@ -27,7 +27,7 @@ export const login = (req: Request, res: Response): void => {
       res.json({ status: 'OK', data: user })
     })
     .catch(error => {
-      res.status(401).json({ msg: error.message })
+      res.status(401).json({ error: error.message })
     })
 }
 

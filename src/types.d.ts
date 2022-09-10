@@ -1,4 +1,5 @@
 import { Request } from 'express'
+import { Countries } from './enums'
 
 export interface CreateUser {
   name: string
@@ -12,7 +13,7 @@ export interface CreateCoach {
   imageURL: string
   description: string
   linkedinURL: string
-  countrie: string
+  countrie: Countries
 }
 
 export interface UpdateCoach {
@@ -20,7 +21,7 @@ export interface UpdateCoach {
   imageURL?: string
   description?: string
   linkedinURL?: string
-  countrie?: string
+  countrie?: Countries
 }
 
 export interface LoginUser {

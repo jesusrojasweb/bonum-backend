@@ -4,6 +4,7 @@ import connectDB from './config/mongo'
 import v1AuthRoutes from './v1/routes/authRoutes'
 import v1CoachesRoutes from './v1/routes/coachesRoutes'
 import cookieParser from 'cookie-parser'
+import notFound from './middlewares/notFound'
 
 const app = express()
 
@@ -14,6 +15,7 @@ app.use(cookieParser())
 
 app.use('/api/v1/auth', v1AuthRoutes)
 app.use('/api/v1/coaches', v1CoachesRoutes)
+app.use(notFound)
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`)
