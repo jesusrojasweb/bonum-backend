@@ -7,6 +7,22 @@ export interface CreateUser {
   isAdmin?: boolean
 }
 
+export interface CreateCoach {
+  name: string
+  imageURL: string
+  description: string
+  linkedinURL: string
+  countrie: string
+}
+
+export interface UpdateCoach {
+  name?: string
+  imageURL?: string
+  description?: string
+  linkedinURL?: string
+  countrie?: string
+}
+
 export interface LoginUser {
   email: string
   password: string
