@@ -15,8 +15,15 @@ export const handleValidationErrors = (
 
   return next()
 }
-export const authenticationValidator = [
+export const registerValidator = [
   body('name', 'Name is required').trim().not().isEmpty(),
+  body('email', 'Eamil format invalid').trim().isEmail().normalizeEmail(),
+  body('password', 'Password must contain a minimum of 8 characters')
+    .trim()
+    .isLength({ min: 8 }),
+  handleValidationErrors,
+]
+export const loginValidator = [
   body('email', 'Eamil format invalid').trim().isEmail().normalizeEmail(),
   body('password', 'Password must contain a minimum of 8 characters')
     .trim()

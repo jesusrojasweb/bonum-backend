@@ -25,3 +25,6 @@ export const NODE_ENV =
   process.env.NODE_ENV !== null && process.env.NODE_ENV !== undefined
     ? process.env.NODE_ENV
     : 'production'
+
+export const CLIENT_URL =
+  NODE_ENV === 'development' ? 'http://localhost:3000' : ''

@@ -1,5 +1,6 @@
 import express from 'express'
-import { PORT } from './config/config'
+import cors from 'cors'
+import { CLIENT_URL, PORT } from './config/config'
 import connectDB from './config/mongo'
 import v1AuthRoutes from './v1/routes/authRoutes'
 import v1CoachesRoutes from './v1/routes/coachesRoutes'
@@ -10,6 +11,7 @@ const app = express()
 
 void connectDB()
 
+app.use(cors({ origin: CLIENT_URL }))
 app.use(express.json())
 app.use(cookieParser())
 
