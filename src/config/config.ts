@@ -27,4 +27,4 @@ export const NODE_ENV =
     : 'production'
 
 export const CLIENT_URL =
-  NODE_ENV === 'development' ? 'http://localhost:3000' : ''
+  NODE_ENV === 'development' ? 'http://localhost:3000' : process.env.CLIENT_URL
