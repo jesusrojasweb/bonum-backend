@@ -9,6 +9,16 @@ export const getCoaches = (_req: Request, res: Response): void => {
     })
     .catch(error => res.status(500).json({ error: error.message }))
 }
+export const getOneCoach = (req: Request, res: Response): void => {
+  const { coachId } = req.params
+
+  coachesServices
+    .getOneCoach(coachId)
+    .then(coach => {
+      res.json({ status: 'OK', data: coach })
+    })
+    .catch(error => res.status(500).json({ error: error.message }))
+}
 
 export const createCoach = (req: Request, res: Response): void => {
   const reqCoach = req.body

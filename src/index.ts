@@ -11,7 +11,12 @@ const app = express()
 
 void connectDB()
 
-app.use(cors({ origin: CLIENT_URL }))
+app.use(
+  cors({
+    credentials: true,
+    origin: CLIENT_URL,
+  })
+)
 app.use(express.json())
 app.use(cookieParser())
 

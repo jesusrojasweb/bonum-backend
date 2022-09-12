@@ -10,6 +10,7 @@ export const requireRefreshToken = (
 ): void => {
   try {
     const { token: refreshTokenCookie } = req.cookies.refreshToken
+    console.log(req.cookies)
 
     if (refreshTokenCookie === null || refreshTokenCookie === undefined)
       throw new Error('Token doesnt exist')

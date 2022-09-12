@@ -10,6 +10,15 @@ export const getCoaches = async (): Promise<any> => {
     return await Promise.reject(error)
   }
 }
+export const getOneCoach = async (coachId: string): Promise<any> => {
+  try {
+    const coach = await Coach.findOne({ _id: coachId })
+
+    return coach
+  } catch (error) {
+    return await Promise.reject(error)
+  }
+}
 
 export const createCoach = async ({
   name,

@@ -41,5 +41,12 @@ export const refreshToken = (req: ReqWithId, res: Response): void => {
 
   const { token } = generateToken(id, expiresIn, SECRET)
 
-  res.json({ status: 'OK', data: { token } })
+  authServices
+    .getUser(id)
+    .then(user => {
+      res.json({ status: 'OK', data: { user, token } })
+    })
+    .catch(error => {
+      res.status(500).json({ error: error.message })
+    })
 }

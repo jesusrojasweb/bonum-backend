@@ -6,7 +6,17 @@ import { CreateUser, LoginUser } from '../types'
 import { generateRefreshToken, generateToken } from '../utils/tokenManager'
 
 const saltRounds = 10
-const expiresIn = 60 * 60
+const expiresIn = 60 * 60 * 60
+
+export const getUser = async (userId: string): Promise<any> => {
+  try {
+    const user = await User.findOne({ _id: userId })
+
+    return user
+  } catch (error) {
+    return await Promise.reject(error)
+  }
+}
 
 export const createUser = async (
   { name, email, password }: CreateUser,
